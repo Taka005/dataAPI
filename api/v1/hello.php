@@ -1,7 +1,7 @@
 <?php
     header("Content-Type: application/json; charset=UTF-8");
     
-    $res["status"] = "success";
+    $res["success"] = true;
     $res["message"] = null;
     $res["data"] = "Hello";
     
