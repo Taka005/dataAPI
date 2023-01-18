@@ -15,14 +15,29 @@
         curl_close($ch);
         $user = json_decode($results,true);
 
-        $user["avatar"] = "https://cdn.discordapp.com/avatars/".$user["id"]."/".$user["avatar"].is_animated($user["avatar"])."?size=1024";
-
-        $res["success"] = true;
-        $res["message"] = null;
-        $res["data"] = $user;
+        if(isset($user["message"])){
+            $res["success"] = true;
+            $res["message"] = null;
+            $res["data"] = (object)[
+                "id"=> $user["id"],
+                "username"=> $user["username"],
+                "discriminator"=> $user["discriminator"],
+                "tag"=> $user["username"].$user["discriminator"],
+                "avatarURL"=> "https://cdn.discordapp.com/avatars/".$user["id"]."/".$user["avatar"].is_animated($user["avatar"])."?size=1024",
+                "bannerURL"=> "https://cdn.discordapp.com/banners/".$user["id"]."/".$user["banner"].is_animated($user["banner"])."?size=1024",
+                "avatar"=> $user["avatar"],
+                "banner"=> $user["banner_color"],
+                "accent"=> $user["accent_color"],
+                "flag"=> $user["public_flags"]
+            ];
+        }else{
+            $res["success"] = false;
+            $res["message"] = "Unknown User";
+            $res["data"] = null;
+        }
     }else{
         $res["success"] = false;
-        $res["message"] = "Parameter not found";
+        $res["message"] = "Parameter Not Found";
         $res["data"] = null;
     }
     
