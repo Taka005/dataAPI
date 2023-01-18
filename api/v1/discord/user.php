@@ -16,15 +16,27 @@
         $user = json_decode($results,true);
 
         if(!isset($user["message"])){
+            if(is_null($user["avatar"])){
+                $avatar = "https://cdn.discordapp.com/avatars/".$user["id"]."/".$user["avatar"].is_animated($user["avatar"])."?size=1024";
+            }else{
+                $avatar = null;
+            }
+
+            if(is_null($user["banner"])){
+                $banner = "https://cdn.discordapp.com/banners/".$user["id"]."/".$user["banner"].is_animated($user["banner"])."?size=1024";
+            }else{
+                $avatar = null;
+            }
+
             $res["success"] = true;
             $res["message"] = null;
             $res["data"] = (object)[
                 "id"=> $user["id"],
                 "username"=> $user["username"],
                 "discriminator"=> $user["discriminator"],
-                "tag"=> $user["username"].$user["discriminator"],
-                "avatarURL"=> "https://cdn.discordapp.com/avatars/".$user["id"]."/".$user["avatar"].is_animated($user["avatar"])."?size=1024",
-                "bannerURL"=> "https://cdn.discordapp.com/banners/".$user["id"]."/".$user["banner"].is_animated($user["banner"])."?size=1024",
+                "tag"=> $user["username"]."#".$user["discriminator"],
+                "avatarURL"=> $avatar,
+                "bannerURL"=> $banner,
                 "avatar"=> $user["avatar"],
                 "banner"=> $user["banner_color"],
                 "accent"=> $user["accent_color"],
