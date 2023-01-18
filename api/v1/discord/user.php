@@ -15,7 +15,7 @@
         curl_close($ch);
         $user = json_decode($results,true);
 
-        if(isset($user["message"])){
+        if(!isset($user["message"])){
             $res["success"] = true;
             $res["message"] = null;
             $res["data"] = (object)[
