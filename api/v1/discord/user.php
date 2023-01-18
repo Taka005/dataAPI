@@ -16,13 +16,13 @@
         $user = json_decode($results,true);
 
         if(!isset($user["message"])){
-            if(is_null($user["avatar"])){
+            if(!is_null($user["avatar"])){
                 $avatar = "https://cdn.discordapp.com/avatars/".$user["id"]."/".$user["avatar"].is_animated($user["avatar"])."?size=1024";
             }else{
                 $avatar = null;
             }
 
-            if(is_null($user["banner"])){
+            if(!is_null($user["banner"])){
                 $banner = "https://cdn.discordapp.com/banners/".$user["id"]."/".$user["banner"].is_animated($user["banner"])."?size=1024";
             }else{
                 $avatar = null;
