@@ -25,7 +25,7 @@
             if(!is_null($user["banner"])){
                 $banner = "https://cdn.discordapp.com/banners/".$user["id"]."/".$user["banner"].is_animated($user["banner"])."?size=1024";
             }else{
-                $avatar = null;
+                $banner = null;
             }
 
             $res["success"] = true;
@@ -38,8 +38,9 @@
                 "avatarURL"=> $avatar,
                 "bannerURL"=> $banner,
                 "avatar"=> $user["avatar"],
-                "banner"=> $user["banner_color"],
-                "accent"=> $user["accent_color"],
+                "banner"=> $user["banner"],
+                "bannerColor"=> $user["banner_color"],
+                "accentColor"=> $user["accent_color"],
                 "flag"=> $user["public_flags"]
             ];
         }else{
