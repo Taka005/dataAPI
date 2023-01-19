@@ -7,7 +7,7 @@
         $text = htmlspecialchars($_GET["text"]);
 
         $ch = curl_init();
-        curl_setopt($ch,CURLOPT_URL,"https://translate.googleapis.com/translate_a/single?client=gtx&sl=".$source."&tl=".$target."&dt=t&dj=1&q=".$text); 
+        curl_setopt($ch,CURLOPT_URL,urlencode("https://translate.googleapis.com/translate_a/single?client=gtx&sl=".$source."&tl=".$target."&dt=t&dj=1&q=".$text)); 
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
         curl_setopt($ch,CURLOPT_HTTPHEADER,array(
             "Content-type: application/json"
