@@ -16,11 +16,14 @@
         curl_close($ch);
         $translate = json_decode($results,true);
 
+        $translated = array_map(function($sentence){
+            return $sentence["trans"];
+        },$translate["sentence"]);
 
         $res["success"] = true;
         $res["message"] = null;
         $res["data"] = (object)[
-            "text"=> implode(" ",$translate[sentences])
+            "text"=> join("",$translated)
         ];
     }else{
         $res["success"] = false;
