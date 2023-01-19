@@ -20,7 +20,7 @@
         $res["success"] = true;
         $res["message"] = null;
         $res["data"] = (object)[
-            "id"=> $translate
+            "text"=> implode(" ",$translate[sentences])
         ];
     }else{
         $res["success"] = false;
