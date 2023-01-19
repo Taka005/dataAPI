@@ -18,7 +18,7 @@
 
         $translated = array_map(function($sentence){
             return $sentence["trans"];
-        },$translate["sentence"]);
+        },$translate["sentences"]);
 
         $res["success"] = true;
         $res["message"] = null;
