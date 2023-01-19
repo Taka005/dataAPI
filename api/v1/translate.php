@@ -19,7 +19,7 @@
         $translated = array_map(function($sentence){
             return $sentence["trans"];
         },$translate["sentences"]);
-        print(join("",$translated));
+        print($results);
 
         $res["success"] = true;
         $res["message"] = null;
